@@ -1,20 +1,26 @@
 #include <stdio.h>
 
 int main (){  
-    char letras[26];
-    int count = 0;
-    int i = 97;
+    // vetores e strings
+    char nome [50];
+    printf("Qual seu nome? ");
+    gets(nome);
+    printf("Ola %s\n", nome);
 
-    for (i ; i <= 122; i++){
+    //vetores e caracteres
+
+    char letras[26];
+    int i,count = 0;
+    for (i = 97; i <= 122; i++){
         letras[count] = i;
         count++;
-    } 
-
-    for (i = 0; i < 26; i++){
+    }
+    //Imprimindo as letras e seus valores em decimal
+    for ( i = 0; i < 26; i++)
+    {
         printf("%d == %c\n", letras[i], letras[i]);
     }
 
- 
-
     return 0;
+
 }
