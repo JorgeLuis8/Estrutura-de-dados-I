@@ -18,7 +18,7 @@ int main(){
     }
     
     for (i = 4; i >= 0 ; i--){
-        printf("%f\n", valores[i]);
+        printf("%.2f\n", valores[i]);
     }
     
 
