@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "*.js": "javascript",
+        "*.jsx": "javascriptreact",
+        "*.xml": "html",
+        "*.svg": "html",
+        "*.html": "html",
+        "django-html": "html",
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html",
+        "**/base_templates/**/*.html": "django-html",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+        "stdio.h": "c",
+        "string.h": "c"
     }
 }
