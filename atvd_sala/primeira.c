@@ -3,8 +3,7 @@
 #include <time.h>
 
 int main(){
-    int *vet,n,i,soma,media,x;
-    int max,min = 10000;
+    int *vet,n,i,soma = 0,media = 0;
     srand(time(NULL));
 
     printf("Digite o tamanho do vetor: ");
@@ -23,20 +22,16 @@ int main(){
         vet[i] = rand()%n;
     }
     
-    for (i = 0; i< n; i++){
-		soma = soma + vet[i];
-	}
-    
     for (i = 0; i <n ; i++){
-		printf("%d\n ",vet[i]);
+		printf("%d\n",vet[i]);
 	}
-	
-	media = (float) soma/n;
-	
-	printf("%d",media);
-	
-	
-	
+    for (i = 0; i <n ; i++){
+		soma = soma + vet[i];
+        media = (float) soma / n;
+	}
+
+    printf("A media dos valores do vetor eh: ");
+    printf("%d\n", media);
 
 
 

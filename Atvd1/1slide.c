@@ -3,23 +3,27 @@
 
 int main(){
     char *pointer;
-    int strtam;
+    int strtam,i;
     
 
     printf("Informe o tamanho da sua string: ");
     scanf("%d",&strtam);
 
-    pointer = (char *) malloc(strtam*sizeof(char));
+    pointer = (char *) malloc((strtam + 1)*sizeof(char));
 
     if (!pointer)
     {
         printf("Memory error");
     }
-    
-    printf("Informe sua string: ");
-    scanf("%s",pointer);
 
-    printf("%s\n",pointer);
+    printf("Informe sua string: ");
+    getchar();
+    fgets(pointer,strtam,stdin);
+
+    for (i = 0; pointer[i] != '\0'; i++){
+        printf("%c",pointer[i]);
+    }
+
    
    
 
