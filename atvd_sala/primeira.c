@@ -52,6 +52,10 @@ int main(){
 
     normal = (float *) calloc(n,sizeof(float));
 
+    if(!normal){
+        printf("Memory error");
+    }
+
     for (i = 0; i < n; i++){
         normal[i] = (float) (vet[i]-min)/(max - min);
 
