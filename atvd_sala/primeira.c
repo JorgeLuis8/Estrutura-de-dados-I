@@ -6,6 +6,7 @@ int main(){
     int *vet,n,i,soma = 0,max = 0,min = 1000000;
     double media;
     float *normal;
+    
     srand((unsigned)time(NULL));
 
 
@@ -52,13 +53,14 @@ int main(){
     normal = (float *) calloc(n,sizeof(float));
 
     for (i = 0; i < n; i++){
-        normal[i] = (vet[i]-min)/(max - min);
+        normal[i] = (float) (vet[i]-min)/(max - min);
 
     }
 
     for (i = 0; i <n ; i++){
         printf("%.2f\n",normal[i]);
     }
+
     free(vet);
     free(normal);
 
