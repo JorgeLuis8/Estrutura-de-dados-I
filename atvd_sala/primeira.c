@@ -23,12 +23,9 @@ int main(){
 
     for (i = 0; i<n; i++)
     {
-        vet[i] = rand()%n;
+        vet[i] = rand()%100;
     }
     
-    for (i = 0; i <n ; i++){
-		printf("%d\n",vet[i]);
-	}
     for (i = 0; i <n ; i++){
 		soma = soma + vet[i];
 	}
