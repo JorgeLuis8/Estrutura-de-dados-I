@@ -14,8 +14,7 @@ Ao final, lembre-se de liberar a memória utilizada. */
 #include <stdlib.h>
 
 
-int main()
-{
+int main(){
     int *pointer = NULL;
     int x, i , count = 0, soma = 0, menor = 1000000, maior = 0;
 
