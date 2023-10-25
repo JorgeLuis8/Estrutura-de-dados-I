@@ -1,6 +1,4 @@
-/*Escreva uma função recursiva que escreva na tela todos os números inteiros positivos desde um valor K informado pelo usuário até 0.
- */
-
+/*Escreva uma função recursiva que escreva na tela todos os números inteiros positivos desde um valor K informado pelo usuário até 0*/
 #include <stdio.h>
 #include <stdlib.h>
 
