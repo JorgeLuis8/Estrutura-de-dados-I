@@ -13,6 +13,7 @@
         "stdio.h": "c",
         "string.h": "c",
         "stdlib.h": "c",
-        "limits.h": "c"
+        "limits.h": "c",
+        "calculadora.h": "c"
     }
 }
