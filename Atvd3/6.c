@@ -1,3 +1,5 @@
+/*Escreva uma função que faça a procura sequencial de um valor passado por parâmetro num vetor também passado por parâmetro.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
