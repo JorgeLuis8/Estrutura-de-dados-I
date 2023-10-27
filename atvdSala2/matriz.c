@@ -28,17 +28,3 @@ float acessar(Matriz *m, int n, int l)
     }
     return 0;
 }
-
-
-
-void atribuir(Matriz *m,int i,int j,float valor){
-    int x,y;
-    for(x = 0; x <i;x++){
-        for ( y = 0; y < j; y++)
-        {
-           m->linha= valor;
-           m->coluna=valor;
-        }
-        
-    }
-}
