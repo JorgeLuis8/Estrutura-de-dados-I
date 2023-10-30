@@ -3,11 +3,12 @@
 
 int main(){
 
-    Matriz *c = criar(10,10);
+    Matriz *c = criar(3,3);
 
-    acessar(c,3,4);
+    atribuir(c,0,2,3);
 
-    atribuir(c,1,2,10);
+    acessar(c,3,3);
+
 
     return 0;
 }

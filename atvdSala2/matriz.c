@@ -28,3 +28,5 @@ float acessar(Matriz *m, int n, int l)
     }
     return 0;
 }
+
+
