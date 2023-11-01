@@ -31,5 +31,7 @@ void print_produto(Produto *p){
 }
 
 void alterar(Produto *p){
-    //produto
+    scanf("%d",&p->id);
+    scanf("%f",&p->valor);
+    scanf("%s",p->nome, stdin);
 }
