@@ -3,7 +3,8 @@
 
 int main(){
     Produto *p = cadastrar();
-
+    print_produto(p);
+    alterar(p);
     print_produto(p);
     return 0;
 }

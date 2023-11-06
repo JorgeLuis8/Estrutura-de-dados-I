@@ -5,11 +5,11 @@
 struct produto
 {
     int id;
-    char nome;
+    char nome[100];
     float valor;
 };
 
-Produto *cadastrar(){
+Produto* cadastrar(){
     Produto *p = (Produto*)malloc(sizeof(Produto));
 
     if(!p){
@@ -18,8 +18,7 @@ Produto *cadastrar(){
 
     scanf("%d",&p->id);
     scanf("%f",&p->valor);
-    scanf("%s",p->nome, stdin);
-
+    scanf("%s",&p->nome,stdin);
     return p;
    
 }
@@ -33,5 +32,5 @@ void print_produto(Produto *p){
 void alterar(Produto *p){
     scanf("%d",&p->id);
     scanf("%f",&p->valor);
-    scanf("%s",p->nome, stdin);
+    scanf("%s",&p->nome);
 }
