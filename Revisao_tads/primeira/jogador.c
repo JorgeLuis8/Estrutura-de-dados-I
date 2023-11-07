@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "jogador.h"
 
-typedef struct jogador
+struct jogador
 {
     char nome[50];
     int jogos;

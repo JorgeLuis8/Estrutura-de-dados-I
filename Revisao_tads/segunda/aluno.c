@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "aluno.h"
 
-typedef struct aluno{
+struct aluno{
     char nome[50];
     int matricula;
     float nota1;
@@ -11,7 +11,8 @@ typedef struct aluno{
 };
 
 Aluno *atribuir(int num) {
-    Aluno *a = (Aluno*)malloc(num * sizeof(Aluno));
+   Aluno *a = (Aluno*)malloc(num * sizeof(Aluno));
+
 
     if (!a) return NULL;
 
