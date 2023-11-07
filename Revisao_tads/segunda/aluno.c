@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "aluno.h"
 
-typedef struct {
+typedef struct aluno{
     char nome[50];
     int matricula;
     float nota1;
     float nota2;
     float nota3;
-} Aluno;
+};
 
 Aluno *atribuir(int num) {
-    int i;
-    Aluno *a = (Aluno *)malloc(num * sizeof(Aluno));
+    Aluno *a = (Aluno*)malloc(num * sizeof(Aluno));
 
     if (!a) return NULL;
 
+    int i;
     for (i = 0; i < num; i++) {
         printf("Digite o nome do aluno: ");
         scanf("%s", a[i].nome);

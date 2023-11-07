@@ -11,7 +11,7 @@ typedef struct jogador
 };
 
 Jogador *atrubuir(int numjogador){
-    Jogador *j = malloc(numjogador* sizeof(Jogador));
+    Jogador *j =(Jogador*) malloc(numjogador* sizeof(Jogador));
 
     if (!j) return NULL;
     int i;
