@@ -4,7 +4,7 @@
 
 typedef struct jogador
 {
-    char nome[100];
+    char nome[50];
     int jogos;
     int gols;
     int assistencias;

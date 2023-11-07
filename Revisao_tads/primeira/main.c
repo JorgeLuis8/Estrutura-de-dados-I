@@ -1,4 +1,5 @@
-#include "jogador.c"
+#include <stdio.h>
+#include "jogador.h"
 
 int main(){
      int numJogadores;
