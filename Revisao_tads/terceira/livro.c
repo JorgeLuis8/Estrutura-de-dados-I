@@ -2,48 +2,59 @@
 #include <stdlib.h>
 #include "livro.h"
 
-typedef struct{
+struct palavras
+{
+    char palavras[100];
+};
+
+
+struct livro{
     char titulo[50];
     char autor [50];
-    int ano_lascamento;
-    char *palavra_chave;
+    int ano_publicacao;
+    Palavras *palavra_chave;
+    int Qtd_chaves;
+};
 
-}Livro;
+Livro *atribuir (int QtdLivros) {
+    int i, qtdChaves, j;
+    Livro *l = (Livro*) malloc (QtdLivros * sizeof(Livro));
 
-Livro *atribuir(int num){
-    int i,j,qtd_palavras;
-    Livro *l = (Livro*) malloc(num *sizeof(Livro));
+    for (i=0;i<QtdLivros;i++)
+    {
+        printf ("Qual o titulo do livro: ");
+        scanf ("%s", l[i].titulo);
+        printf ("Digite o nome do autor: ");
+        scanf ("%s", l[i].autor);
+        printf ("O ano de publicacao: ");
+        scanf ("%d", &l[i].ano_publicacao);
 
-    if(!l) return NULL;
+        printf ("Quantas palavras chaves deseja cadastrar? ");
+        scanf ("%d", &qtdChaves);
 
-    for(i=0; i<num; i++){
-        printf("Informe o titulo:");
-        scanf("%s",l[i].titulo);
-        printf("\n");
-        printf("Informe o nome do autor: ");
-        scanf("%s",l[i].autor);
-        printf("\n");
-        printf("Informe o ano de publicacao: ");
-        scanf("%s",l[i].ano_lascamento);
-        printf("\n");
+        l[i].palavra_chave = (Palavras*)malloc(qtdChaves * sizeof(Palavras));
+
+        for (j=0;j<qtdChaves;j++) {
+            printf ("Digite a palavra chave: ");
+            scanf ("%s", l[i].palavra_chave[j].palavras);
+            }
+        l[i].Qtd_chaves = j;
+
+
     }
-    printf("Informe a quantidade de palavras chave: ");
-    scanf("%d",qtd_palavras);
-    l->palavra_chave = (char*) malloc(qtd_palavras * sizeof(char));
+    return l;
 
-    for ( i = 0; i < qtd_palavras; i++){
-        printf("Informe as palavras chaves: ");
-        scanf("%s",l[i].palavra_chave);
-    }
-    
-    
 }
+void imprimir(struct livro *l, int num) {
+    int i, j;
+    for (i = 0; i < num; i++) {
+        printf("O título do livro é: %s\n", l[i].titulo);
+        printf("O autor do livro é: %s\n", l[i].autor);
+        printf("O ano de publicação do livro é: %d\n", l[i].ano_publicacao);
 
-void imprimir(Livro *l,int num){
-    int i;
-    for(i=0;i<num;i++){
-        printf("O titulo do livor eh: %s",l[i].titulo);
-        printf("O nome do autor eh: %s",l[i].autor);
-        printf("O ano de publicacao eh: %d",l[i].ano_lascamento);
-        printf("As palavras chaves do livro sao: %s",l[i].palavra_chave);
+        printf("As palavras-chave do livro sao:\n");
+        for (j = 0; j < l[i].Qtd_chaves; j++) {
+            printf("%s\n", l[i].palavra_chave[j].palavras);
+        }
+    }
 }
