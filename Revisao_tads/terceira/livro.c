@@ -67,11 +67,14 @@ void adicionarPalavra(Livro * l,int num){
         if (strcmp(Ntitulo, l[i].titulo) == 0){
             printf("Informe a quantidade de palavras chaves: ");
             scanf("%d",&qtd_palavras);
-            l[i].palavra_chave = realloc(l[i].palavra_chave, (l[i].Qtd_chaves + qtd_palavras) * sizeof(Palavras));
-            for (j = 0; j < qtd_palavras; j++){
-                printf("informe as novas plavras chaves: ");
-                scanf ("%s", l[i].palavra_chave[j].palavras);
-                }
+            l[i].palavra_chave = (Palavras*) realloc(l[i].palavra_chave,(l[i].Qtd_chaves + qtd_palavras) * sizeof(Palavras));
+            for (j = l[i].Qtd_chaves; j < l[i].Qtd_chaves + qtd_palavras; j++) {
+                printf("Informe a nova palavra chave: ");
+                scanf("%s", l[i].palavra_chave[j].palavras);
+            }
+
+            // Atualiza a quantidade de palavras-chave
+            l[i].Qtd_chaves += qtd_palavras;
         }else{
             printf("Titulo inexistente!\n");
         }
