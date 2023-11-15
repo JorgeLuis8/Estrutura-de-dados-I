@@ -14,20 +14,27 @@ struct contato{
     int qtd_etiquetas;
 };
 
-Contato *atribuir(int num){
+Contato *atribuir(Contato *c,int num,int qtd_contato){
     int i, j, qtd_etiquetas;
-    Contato *c = (Contato *)calloc(num, sizeof(Contato));
-    for (i = 0; i < num; i++){
+    c = (Contato *) realloc(c, num * sizeof(Contato));
+    if (!c){
+        printf("Erro de alocacao");
+        exit(1);
+    }
+    
+    for (i = qtd_contato; i < qtd_contato + num; i++){
         printf("Informe o nome do contato: ");
         scanf("%s", c[i].nome);
         printf("\n");
         printf("Informe o numero do contato: ");
         scanf("%d", &c[i].numero);
+
         printf("\n");
         printf("Informe a quantida de etiquetas: ");
         scanf("%d", &c[i].qtd_etiquetas);
         qtd_etiquetas = c[i].qtd_etiquetas;
-        c[i].etiquetas = (Etiqueta *)calloc(qtd_etiquetas, sizeof(Etiqueta));
+       
+        c[i].etiquetas = (Etiqueta *)malloc(qtd_etiquetas * sizeof(Etiqueta));
 
         for (j = 0; j < qtd_etiquetas; j++){
             printf("Digite a etiqueta: ");
@@ -37,24 +44,25 @@ Contato *atribuir(int num){
     return c;
 }
 
-void imprimir(Contato *c, int num){
-    int i, j;
+void imprimir(Contato *contato, int QtdContatos)
+{
+    int i, j, contador = 1;
 
-    printf("Contatos na agenda:\n");
-
-    for (i = 0; i < num; i++){
-        
-        if (strlen(c[i].nome) > 0){
-            printf("O nome do contato eh: %s\n", c[i].nome);
-            printf("O numero do contato eh: %d\n", c[i].numero);
-
-            printf("As etiquetas do contato sao: ");
-            for (j = 0; j < c[i].qtd_etiquetas; j++)
-            {
-                printf("%s\n", c[i].etiquetas[j].etiquetas);
-            }
-            printf("\n");
+    printf("Contatos na agenda: ");
+    for (i = 0; i < QtdContatos; i++)
+    {
+        printf("Contato %d -\n", contador);
+        printf("Nome: %s\n", contato[i].nome);
+        printf("Numero: %d\n", contato[i].numero);
+        printf("Etiquetas: ");
+        for (j = 0; j < contato[i].qtd_etiquetas; j++)
+        {
+            printf("[");
+            printf("%s", contato[i].etiquetas[j].etiquetas);
+            printf("]");
         }
+        contador++;
+        printf("\n");
     }
 }
 

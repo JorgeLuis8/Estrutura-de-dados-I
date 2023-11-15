@@ -2,19 +2,20 @@
 #include <stdlib.h>
 #include "jogador.h"
 
-struct jogador{
+struct jogador
+{
     char nome[50];
     int jogos;
     int gols;
     int assistencias;
 };
 
-Jogador *atrubuir(int numjogador){
-    Jogador *j =(Jogador*) malloc(numjogador* sizeof(Jogador));
+Jogador *atrubuir(Jogador *j,int numjogador,int qtd_jogadores){
+    j = (Jogador *) realloc(j,numjogador * sizeof(Jogador));
 
     if (!j) return NULL;
     int i;
-    for(i=0 ; i < numjogador ; i++){
+    for(i=qtd_jogadores; i < qtd_jogadores + numjogador ; i++){
         printf("Informe o nome do jogador: ");
         scanf("%s",j[i].nome);    
         
@@ -49,7 +50,7 @@ float soma(Jogador *j,int numjogador) {
     return sum;
 }
 
-void ehBom(Jogador *jogadores, int numJogadores){
+void ehBom(Jogador *jogadores, int numJogadores) {
     float godmedia = 1.5;
     int i;
 
@@ -58,9 +59,9 @@ void ehBom(Jogador *jogadores, int numJogadores){
         printf("Jogador %d: ", i + 1);
 
         if (media > godmedia) {
-            printf("É um bom jogador\n");
+            printf("eh um bom jogador\n");
         } else {
-            printf("É um péssimo jogador\n");
+            printf("eh um péssimo jogador\n");
         }
     }
 }

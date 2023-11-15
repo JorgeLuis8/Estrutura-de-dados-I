@@ -10,14 +10,13 @@ struct aluno{
     float nota3;
 };
 
-Aluno *atribuir(int num) {
-   Aluno *a = (Aluno*)malloc(num * sizeof(Aluno));
+Aluno *atribuir(Aluno *a,int num,int qtd_aluno) {
+int i;
+   a = (Aluno *) realloc(a,num * sizeof(Aluno));
+   if(!a) return NULL;
 
 
-    if (!a) return NULL;
-
-    int i;
-    for (i = 0; i < num; i++) {
+    for (i = qtd_aluno; i < qtd_aluno + num; i++) {
         printf("Digite o nome do aluno: ");
         scanf("%s", a[i].nome);
         printf("Digite a matricula do aluno: ");

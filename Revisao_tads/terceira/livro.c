@@ -14,11 +14,11 @@ struct livro{
     int Qtd_chaves;
 };
 
-Livro *atribuir(int QtdLivros){
+Livro *atribuir(Livro * l ,int num,int qtd_livros){
     int i, qtdChaves, j;
-    Livro *l = (Livro *)malloc(QtdLivros * sizeof(Livro));
+    l = (Livro *) realloc(l,num * sizeof(Livro));
 
-    for (i = 0; i < QtdLivros; i++){
+    for (i = qtd_livros; i < num + qtd_livros; i++){
         printf("Qual o titulo do livro: ");
         scanf("%s", l[i].titulo);
         printf("Digite o nome do autor: ");
