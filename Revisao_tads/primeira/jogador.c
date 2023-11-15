@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "jogador.h"
 
-struct jogador
-{
+struct jogador{
     char nome[50];
     int jogos;
     int gols;
@@ -50,7 +49,7 @@ float soma(Jogador *j,int numjogador) {
     return sum;
 }
 
-void ehBom(Jogador *jogadores, int numJogadores) {
+void ehBom(Jogador *jogadores, int numJogadores){
     float godmedia = 1.5;
     int i;
 

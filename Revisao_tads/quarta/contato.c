@@ -1,79 +1,150 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "contato.h"
+#include <string.h>
 
-struct etiqueta
-{
+struct etiqueta{
     char etiquetas[100];
 };
 
-struct contato
-{
+struct contato{
     char nome[100];
     int numero;
-    Etiqueta *etiquetas; 
+    Etiqueta *etiquetas;
     int qtd_etiquetas;
 };
 
 Contato *atribuir(int num){
-    int i,j,qtd_etiquetas;
-    Contato *c = (Contato *) calloc(num,sizeof(Contato));
-    for(i=0 ;i<num ;i++){
+    int i, j, qtd_etiquetas;
+    Contato *c = (Contato *)calloc(num, sizeof(Contato));
+    for (i = 0; i < num; i++){
         printf("Informe o nome do contato: ");
-        scanf("%s",c[i].nome);
+        scanf("%s", c[i].nome);
         printf("\n");
         printf("Informe o numero do contato: ");
-        scanf("%d",&c[i].numero);
+        scanf("%d", &c[i].numero);
         printf("\n");
         printf("Informe a quantida de etiquetas: ");
-        scanf("%d",&c[i].qtd_etiquetas);
+        scanf("%d", &c[i].qtd_etiquetas);
         qtd_etiquetas = c[i].qtd_etiquetas;
         c[i].etiquetas = (Etiqueta *)calloc(qtd_etiquetas, sizeof(Etiqueta));
 
-        for ( j = 0; j < qtd_etiquetas; j++){
+        for (j = 0; j < qtd_etiquetas; j++){
             printf("Digite a etiqueta: ");
-            scanf("%s",c[i].etiquetas[j].etiquetas);
+            scanf("%s", c[i].etiquetas[j].etiquetas);
         }
-        
-    
     }
     return c;
 }
 
-void imprimir(Contato *c,int num){
-    int i,j;
-    for ( i = 0; i < num; i++){
-        printf("O nome do contato eh: %s\n",c[i].nome);
-        printf("O numero do contato eh: %d\n",c[i].numero);
+void imprimir(Contato *c, int num){
+    int i, j;
 
-        printf("As estiquetas do contato sao: ");
-        for(j = 0 ;j < c[i].qtd_etiquetas ;j++){
-            printf("%s\n",c[i].etiquetas[j].etiquetas);
+    printf("Contatos na agenda:\n");
+
+    for (i = 0; i < num; i++){
+        
+        if (strlen(c[i].nome) > 0){
+            printf("O nome do contato eh: %s\n", c[i].nome);
+            printf("O numero do contato eh: %d\n", c[i].numero);
+
+            printf("As etiquetas do contato sao: ");
+            for (j = 0; j < c[i].qtd_etiquetas; j++)
+            {
+                printf("%s\n", c[i].etiquetas[j].etiquetas);
+            }
+            printf("\n");
         }
+    }
+}
+
+void adcEtiqueta(Contato *c, int num){
+    int i, qtdEtiquetas, j,numContato;
+
+    for (i = 0; i < num; i++){
+        printf("Informe o numero do contato: ");
+        scanf("%d", &numContato);
+
+        if (c[i].numero == numContato){
+            printf("Informe a quantidade de etiquetas: ");
+            scanf("%d", &qtdEtiquetas);
+
+            c[i].etiquetas = (Etiqueta *)realloc(c[i].etiquetas, (c[i].qtd_etiquetas + qtdEtiquetas) * sizeof(Etiqueta));
+
+            if (!c[i].etiquetas){
+                printf("Erro de alocação");
+            }
+
+            for (j = c[i].qtd_etiquetas; j < c[i].qtd_etiquetas + qtdEtiquetas; j++){
+                printf("Informe uma nova etiqueta: ");
+                scanf("%s", c[i].etiquetas[j].etiquetas);
+            }
+
+            c[i].qtd_etiquetas += qtdEtiquetas;
+        }
+        else{
+            printf("Contato não existe na agenda");
+        }
+    }
+}
+
+void listaContato(Contato *c,int num){
+    int i;
+    printf("Os contatos da sua agenda:\n ");
+    for ( i = 0; i < num; i++){
+        printf("%s\n",c[i].nome);
     }
     
 }
-void adcEtiqueta(Contato *c, int  num){
-    int i,j,numetiquetas;
-    char Ncontato[100];
-    for(i= 0; i < num; i++){
-        printf("Informe o nome do contato: \n");
-        scanf("%s",Ncontato);
-         if (strcmp(Ncontato, c[i].nome) == 0){
-            printf("Informe a quantida de etiquetas: ");
-            scanf("%d",&numetiquetas);
-            c[i].etiquetas = (Etiqueta *)realloc(c[i].etiquetas,(c[i].qtd_etiquetas + numetiquetas) * sizeof(Etiqueta));
-            if(!c[i].etiquetas){
-                printf("Erro de alocacao");
-            }
-            for (j = c[i].qtd_etiquetas; j < c[i].qtd_etiquetas + numetiquetas; j++){
-                printf("Informe a nova etiqueta: ");
-                scanf("%s",c[i].etiquetas[j].etiquetas);
-            
-            }
-            c[i].qtd_etiquetas += numetiquetas;
-         }
+
+void atualizarNumero(Contato *c, int num){
+    int numeroNovo,numeroAntigo,i,flag;
+    printf("Informe o numero antigo: ");
+    scanf("%d",&numeroAntigo);
+    for ( i = 0; i < num; i++){
+        if (numeroAntigo == c[i].numero){
+            printf("Informe o numero novo: ");
+            scanf("%d",&numeroNovo);
+            c[i].numero = numeroNovo;
+            flag = 1;
+        }
+    if (!flag){
+        printf("Este numero nao existe na agenda");
+    }  
         
-      
-        
+    }
+    
+}
+int removerContato(Contato *c, int num){
+    char nomeRemover[100];
+    int i, j;
+
+    printf("Informe o nome do contato a ser removido: ");
+    scanf("%s", nomeRemover);
+
+    
+    for (i = 0; i < num; i++){
+        if (strncmp(c[i].nome, nomeRemover, sizeof(c[i].nome)) == 0){
+            free(c[i].etiquetas);
+
+            for (j = i; j < (num - 1); j++){
+                c[j] = c[j + 1];
+            }
+            memset(&c[num - 1], 0, sizeof(Contato));
+
+            num--; 
+            printf("Contato removido com sucesso.\n");
+            break;
+        }
+    }
+
+    return num; 
+}
+
+void liberar(Contato *c,int num){
+    int i;
+    for (i = 0; i < num; i++){
+        free(c[i].etiquetas);
+    }
+    free(c);
 }
