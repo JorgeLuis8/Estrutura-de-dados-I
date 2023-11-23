@@ -57,5 +57,11 @@ Lista *inserirFimlista(Lista *l,int i){
 Lista *inseirOrdenado(Lista *l,int i){
     Lista *novo = (Lista*) malloc(sizeof(Lista));
     int j;
+    for(j=0 ; novo!= NULL;j++){
+        if (i[i] <= n[i]){
+            /* code */
+        }
+        
+    }
     
 }
