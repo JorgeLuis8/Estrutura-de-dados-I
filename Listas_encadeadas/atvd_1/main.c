@@ -15,7 +15,7 @@ int main(){
     l = inserirFimlista (l,30);
   
     imprimirLista(l);
-    printf("%d\n",qtdElemento(l));
+    printf("Quantidade de elementos: %d\n",qtdElemento(l));
 
    
 

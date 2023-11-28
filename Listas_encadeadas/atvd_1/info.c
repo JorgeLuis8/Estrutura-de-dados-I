@@ -13,11 +13,13 @@ Lista *criarLista(){
     return NULL;
 }
 
-Lista *inserirListaInicio(Lista *l,int i){
+void inserirListaInicio(Lista **l,int i){
     Lista *novo = (Lista*) malloc(sizeof(Lista));
-    novo->info = i;
-    novo->prox = l;
-    return novo;
+    if (novo){
+        novo->info = i;
+        novo->prox = *l;
+        *l = novo;
+    }
 }
 
 void imprimirLista(Lista *l){
@@ -54,7 +56,4 @@ Lista *inserirFimlista(Lista *l,int i){
 
     }
     
-Lista *inseirOrdenado(Lista *l,int i){
-    Lista *novo = (Lista*) malloc(sizeof(Lista));
-    
-}
+

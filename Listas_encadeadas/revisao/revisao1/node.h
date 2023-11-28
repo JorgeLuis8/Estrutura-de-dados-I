@@ -1,8 +1,4 @@
-typedef struct _snode Snode;
-typedef struct _linked_list LinkedList;
+typedef struct lista Lista;
 
-Snode *snode_criar(int val);
-
-LinkedList *criar();
-
-void adicinoar_inicio(LinkedList *L,int val);
+void inserirInicio(Lista **lista,int num);
+void inserirFinal(Lista **lista,int num);

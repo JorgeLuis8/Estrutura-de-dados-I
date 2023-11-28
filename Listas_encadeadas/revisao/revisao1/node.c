@@ -2,34 +2,37 @@
 #include <string.h>
 #include <stdlib.h>
 #include "node.h"
-typedef struct _snode{
-    int val;
-    struct _snode *next;
+
+typedef struct lista{
+    int valor;
+    struct lista *proximo;
 };
 
-typedef struct _linked_list{
-    Snode *begin;
-};
-
-Snode *snode_criar(int val){
-    Snode *novo = (Snode*) calloc(1,sizeof(Snode));
-    novo->val = val;
-    novo->next = NULL;
-
-    return novo;   
+void inserirInicio(Lista **lista, int valor){
+    Lista *novo = (Lista *)malloc(sizeof(Lista));
+    if (novo){
+        novo->valor = valor;
+        novo->proximo = *lista;
+        *lista = novo;
+    }
+    else{
+        printf("Erro de alocacao");
+    }
 }
 
-LinkedList *LinkedList_criar(){
-    LinkedList *L = (LinkedList *) calloc(1, sizeof(LinkedList));
-    L->begin = NULL;
-
-    return L;
-}
-
-
-void adicinoar_inicio(LinkedList *L,int val){
-        Snode *p = snode_criar(val);
-        p->next = L->begin;
-        L->begin = p;
-
+void inserirFinal(Lista **lista, int num){
+    Lista *aux, *novo = (Lista *)malloc(sizeof(Lista));
+    if (novo){
+        novo->valor = num;
+        novo->proximo = NULL;
+        if (*lista == NULL){
+            *lista = novo;
+        }
+        else{
+            aux = *lista;
+        }
+    }
+    else{
+        printf("Erro de alocacao");
+    }
 }
