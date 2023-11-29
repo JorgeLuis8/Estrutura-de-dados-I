@@ -39,20 +39,29 @@ int qtdElemento(Lista *l){
     return count;
 }
 
-Lista *inserirFimlista(Lista *l,int i){
-    Lista* novo = (Lista*) malloc(sizeof(Lista));
-    novo->info = i;
-    novo->prox = NULL;
+void inserirFimlista(Lista **l,int i){
+    Lista *aux,*novo = (Lista*) malloc(sizeof(Lista));
 
-    if (l == NULL) { 
-        return novo;
-    } 
-    else { 
-        Lista* p; 
-        for (p = l; p->prox != NULL; p = p->prox);
-        p->prox = novo; 
-        return l;
+    if (novo){
+        novo->info = i;
+        novo->prox = NULL;
+        if (*l == NULL){
+            *l = novo;
+        }else{
+            aux = *l;
+
+            while(aux->prox)
+                aux = aux->prox;
+            aux->prox = novo;
+        }
+        
+
+        
+    }else{
+        printf("Erro de alocacao");
     }
+    
+
 
     }
     

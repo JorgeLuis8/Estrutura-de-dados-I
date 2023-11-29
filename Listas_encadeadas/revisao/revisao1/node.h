@@ -1,4 +1,6 @@
+typedef struct no No;
 typedef struct lista Lista;
-
-void inserirInicio(Lista **lista,int num);
-void inserirFinal(Lista **lista,int num);
+void criar_lista(Lista *lista);
+void inserir_inicio(Lista *lista,int valor);
+void inserir_final(Lista *lista,int valor);
+void imprimir_lista(Lista lista);
