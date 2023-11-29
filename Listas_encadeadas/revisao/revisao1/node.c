@@ -64,66 +64,76 @@ void inserir_final(Lista *lista, int valor)
         printf("Errro de alocacao!");
     }
 }
-void inserir_ordenado(Lista *lista,int num){
-    No *aux,*novo = (No*) malloc(sizeof(No));
+void inserir_ordenado(Lista *lista, int num)
+{
+    No *aux, *novo = (No *)malloc(sizeof(No));
 
-    if(novo){
+    if (novo)
+    {
         novo->valor = num;
-        if (lista->inicio == NULL){
+        if (lista->inicio == NULL)
+        {
             novo->proximo = NULL;
             lista->inicio = novo;
-        }else if(novo->valor < lista->inicio->valor){
+        }
+        else if (novo->valor < lista->inicio->valor)
+        {
             novo->proximo = lista->inicio;
             lista->inicio = novo;
-        }else{
+        }
+        else
+        {
             aux = lista->inicio;
-            while (aux->proximo && novo->valor > aux->proximo){
+            while (aux->proximo && novo->valor > aux->proximo)
+            {
                 aux = aux->proximo;
             }
-        novo->proximo = aux->proximo;
-        aux->proximo = novo;
+            novo->proximo = aux->proximo;
+            aux->proximo = novo;
         }
-    lista->tam++; 
+        lista->tam++;
     }
 }
-void imprimir_lista(Lista lista){
+void imprimir_lista(Lista lista)
+{
     No *no = lista.inicio;
-    printf("O tamanho da lista eh: %d\n",lista.tam);
-    while (no){
-        printf("Os elementos da lista sao: %d\n",no->valor);
+    printf("O tamanho da lista eh: %d\n", lista.tam);
+    while (no)
+    {
+        printf("Os elementos da lista sao: %d\n", no->valor);
         no = no->proximo;
     }
-    
 }
 
-
-
-
-
-void liberar_lista(Lista *lista){
+void liberar_lista(Lista *lista)
+{
     free(lista);
 }
 
-No* remover_elemento(Lista *lista, int valor){
-    No *aux,*remover = NULL;
-    if(lista->inicio){
-        if(lista->inicio->valor == valor){
+No *remover_elemento(Lista *lista, int valor)
+{
+    No *aux, *remover = NULL;
+    if (lista->inicio)
+    {
+        if (lista->inicio->valor == valor)
+        {
             remover = lista->inicio;
             lista->inicio = remover->proximo;
             lista->tam--;
-
-        }else{
+        }
+        else
+        {
             aux = lista->inicio;
-            while ((aux->proximo && aux->proximo->valor != valor)){
+            while ((aux->proximo && aux->proximo->valor != valor))
+            {
                 aux = aux->proximo;
             }
-            if (aux->proximo){
+            if (aux->proximo)
+            {
                 remover = aux->proximo;
                 aux->proximo = remover->proximo;
                 lista->tam--;
             }
-            
-            
         }
     }
     return remover;
