@@ -64,7 +64,28 @@ void inserir_final(Lista *lista, int valor)
         printf("Errro de alocacao!");
     }
 }
+void inserir_ordenado(Lista *lista,int num){
+    No *aux,*novo = (No*) malloc(sizeof(No));
 
+    if(novo){
+        novo->valor = num;
+        if (lista->inicio == NULL){
+            novo->proximo = NULL;
+            lista->inicio = novo;
+        }else if(novo->valor < lista->inicio->valor){
+            novo->proximo = lista->inicio;
+            lista->inicio = novo;
+        }else{
+            aux = lista->inicio;
+            while (aux->proximo && novo->valor > aux->proximo){
+                aux = aux->proximo;
+            }
+        novo->proximo = aux->proximo;
+        aux->proximo = novo;
+        }
+        
+    }
+}
 void imprimir_lista(Lista lista){
     No *no = lista.inicio;
     printf("O tamanho da lista eh: %d\n",lista.tam);

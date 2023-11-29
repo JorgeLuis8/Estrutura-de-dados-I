@@ -10,11 +10,15 @@ int main(){
     //inserir_inicio(&l,6);
     //imprimir_lista(l);
 
-    inserir_final(&l,277);
-    inserir_final(&l,255);
-    inserir_final(&l,221);
-    imprimir_lista(l);
+    //inserir_final(&l,277);
+    //inserir_final(&l,255);
+    //inserir_final(&l,221);
+    //imprimir_lista(l);
 
+    inserir_ordenado(&l,5);
+    inserir_ordenado(&l,500);
+    inserir_ordenado(&l,10);
+    imprimir_lista(l);
 
     return 0;
 }
