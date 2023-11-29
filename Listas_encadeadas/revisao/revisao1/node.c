@@ -83,7 +83,7 @@ void inserir_ordenado(Lista *lista,int num){
         novo->proximo = aux->proximo;
         aux->proximo = novo;
         }
-        
+    lista->tam++; 
     }
 }
 void imprimir_lista(Lista lista){
@@ -94,4 +94,37 @@ void imprimir_lista(Lista lista){
         no = no->proximo;
     }
     
+}
+
+
+
+
+
+void liberar_lista(Lista *lista){
+    free(lista);
+}
+
+No* remover_elemento(Lista *lista, int valor){
+    No *aux,*remover = NULL;
+    if(lista->inicio){
+        if(lista->inicio->valor == valor){
+            remover = lista->inicio;
+            lista->inicio = remover->proximo;
+            lista->tam--;
+
+        }else{
+            aux = lista->inicio;
+            while ((aux->proximo && aux->proximo->valor != valor)){
+                aux = aux->proximo;
+            }
+            if (aux->proximo){
+                remover = aux->proximo;
+                aux->proximo = remover->proximo;
+                lista->tam--;
+            }
+            
+            
+        }
+    }
+    return remover;
 }

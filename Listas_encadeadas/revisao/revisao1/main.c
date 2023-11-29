@@ -3,6 +3,7 @@
 
 int main(){
     Lista l;
+    No * removido;
     criar_lista(&l);
 
     //inserir_inicio(&l,2);
@@ -19,6 +20,9 @@ int main(){
     inserir_ordenado(&l,500);
     inserir_ordenado(&l,10);
     imprimir_lista(l);
+    liberar_lista(&l);
+    removido = remover_elemento(&l,10);
 
+    imprimir_lista(l);
     return 0;
 }
