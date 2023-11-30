@@ -7,3 +7,4 @@ void inserir_ordenado(Lista *lista,int valor);
 void imprimir_lista(Lista lista);
 void liberar_lista(Lista *lista);
 No *remover_elemento(Lista *lista,int valor);
+No *buscar(Lista *lista,int valor);

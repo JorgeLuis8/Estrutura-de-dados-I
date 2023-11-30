@@ -20,8 +20,13 @@ int main(){
     inserir_ordenado(&l,500);
     inserir_ordenado(&l,10);
     imprimir_lista(l);
-    liberar_lista(&l);
-    removido = remover_elemento(&l,10);
+    //liberar_lista(&l);
+    //removido = remover_elemento(&l,10);
+
+    removido = buscar(&l,10);
+  
+
+    printf("Valor Encontrado: %d\n",removido->valor);
 
     imprimir_lista(l);
     return 0;

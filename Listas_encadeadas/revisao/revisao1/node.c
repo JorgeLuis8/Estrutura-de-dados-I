@@ -138,3 +138,17 @@ No *remover_elemento(Lista *lista, int valor)
     }
     return remover;
 }
+
+No *buscar(Lista *lista,int valor){
+    No *aux,*no = NULL;
+    aux = lista->inicio;
+    while (aux && aux->valor != valor){
+    {
+        aux = aux->proximo;
+    }
+    if(aux){
+        no = aux;
+    }
+}
+    return no; 
+}
