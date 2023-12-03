@@ -148,3 +148,5 @@ void remover(Livro *livros, int num) {
 
     printf("Palavra-chave '%s' não encontrada em nenhum livro\n", palavra);
 }
+
+
