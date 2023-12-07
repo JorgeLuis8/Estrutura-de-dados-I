@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "livro.h"
+#include "livro.c"
 
 
-int main(int argc, char *argv[]) {
+int main() {
 	Livro *l = criar_Livro();
-	l = inserir_ordenado(l)
+	l = inserir_ordenado(l);
+	l = inserir_ordenado(l);
+	imprimir(l);
 	return 0;
 }
