@@ -22,7 +22,7 @@ Livro* inserir_ordenado(Livro *lista_livros){
     scanf("%d",&novo->ano);
     printf("Id:\n");
     scanf("%d",&novo->id);
-    
+    novo->proximo = novo;
     
     return novo;
 }
