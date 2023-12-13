@@ -4,13 +4,13 @@
 
 
 int main() {
-	Livro *l = criar_Livro();
-    inserirCircular(l);
+	Livro *l = criarLista();
+    inserirLivroListaCircular(l);
 	// l = inserir_ordenado(l);
 	// l = inserir_ordenado(l);
 	// l = inserir_ordenado(l);
 	// l = inserir_ordenado(l);
 	// l = inserir_ordenado(l);
-	//imprimir(l);
+	mostrarListaCirular(l);
 	return 0;
 }

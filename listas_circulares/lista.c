@@ -1,44 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lista.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 struct livro{
-    char autor[100], titulo[50];
-    int id, ano;
-    struct livro *proximo;
+	char titulo[100], autor[100];
+	int ano, id;
+	struct livro *prox;
 };
 
-Livro *criar_Livro(){
-    return NULL;
+
+Livro *criarLista(){
+	return NULL;
 }
 
-Livro *inserirCircular(Livro * l){    
-    Livro *aux, *novo = malloc(sizeof(Livro));
-    printf("Id:\n");
-    scanf("%d", &novo->id);
-    /*Verifica se a lista é igual e null, se sim minha lista recebe o novo elemento que quero inserir*/
-    if (l == NULL){
-        novo->proximo = novo;
-        l = novo;
-        printf("Inseriu");
-    }else{
-        Livro *aux = l;
+Livro *inserirLivroListaCircular(Livro *lista_de_livros){
 
-        
-        
-    }
+	Livro *novo = (Livro*) calloc(sizeof(Livro), 1);
+	//preencher os dados do novo livro que serÃ¡ inserido na lista de livros
+	printf("Autor: ");scanf("%s", novo->autor);
+	printf("Titulo: ");scanf("%s", novo->titulo);
+	printf("Ano: ");scanf("%d", &novo->ano);
+	printf("ID: ");scanf("%d", &novo->id);
 
-    return l;
+	//se for vazia
+	if (lista_de_livros == NULL){
+		novo->prox = novo;
+	}
+	else{
+		Livro *aux = lista_de_livros;
+		do{
+			aux = aux->prox;
+		}while(aux->prox != lista_de_livros);
+
+		novo->prox = lista_de_livros;
+		aux->prox = novo;
+	}
+
+	return novo;
 }
 
-void imprimir(Livro *lista_livros){
-    Livro *aux = lista_livros;
-    while (aux != NULL){
-            // printf("%s\n",aux->autor);
-            // printf("%s\n",aux->titulo);
-            // printf("%d\n",aux->ano);
-            printf("%d\n", aux->id);
-            aux = aux->proximo;
-        
+void mostrarListaCirular(Livro *lista_de_livros) {
+    if (lista_de_livros == NULL) {
+        printf("A lista está vazia\n");
+        return;
     }
+
+    Livro *aux = lista_de_livros;
+    do {
+        printf("ID: %d\n", aux->id);
+        aux = aux->prox;
+    } while (aux != lista_de_livros);
 }
