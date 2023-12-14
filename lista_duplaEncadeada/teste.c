@@ -27,17 +27,17 @@ Livro *inserir_inicio(Livro *lista_livro){
     scanf("%s",novo->titulo);
     printf("Informe o ano de lancamento: ");
     scanf("%d",&novo->ano);
-
     novo->prox = lista_livro;
     novo->ant = NULL;
     if (lista_livro){
-        novo->ant = lista_livro;
+        lista_livro->ant = novo;
     }
+    lista_livro = novo;
 
     return lista_livro;
 }
 Livro *inserir_final(Livro *lista_livro){
-    Livro *aux,*novo = (Livro *) malloc(sizeof(Livro));
+    Livro *novo = (Livro *) malloc(sizeof(Livro));
     printf("Informe o id: ");
     scanf("%d",&novo->id);
     printf("Informe o nome do livro: ");
@@ -47,17 +47,19 @@ Livro *inserir_final(Livro *lista_livro){
     printf("Informe o ano de lancamento: ");
     scanf("%d",&novo->ano);
 
-    novo->prox = lista_livro;
+    if(lista_livro == NULL){
+
+    novo->prox = NULL;
     novo->ant = NULL;
-
-    if (lista_livro){
-        for (aux; aux->prox!= NULL; aux = aux->prox);
-
+    lista_livro = novo;
+    }else{
+        Livro *aux = lista_livro;
+        for(aux; aux->prox != NULL;aux = aux->prox);
+        aux->prox = novo;
+        novo->ant = aux;
         
     }
-    
-   
-    
+    return lista_livro;
 }
 void imprimir_lista(Livro *lista_livro) {
     Livro *atual = lista_livro;
