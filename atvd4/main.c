@@ -10,6 +10,13 @@ int main() {
     l = inserir_ordenado(l);
     l = inserir_ordenado(l);
     l = inserir_ordenado(l);
+    l = inserir_ordenado(l);
+    l = inserir_ordenado(l);
+    l = inserir_ordenado(l);
+    l = inserir_ordenado(l);
     imprimir_lista(l);
+    l = removerLivroListaCircular(l);
+    imprimir_lista(l);
+    //quantidadeLivrosPorAutorListaCircular(l);
     return 0;
 }
