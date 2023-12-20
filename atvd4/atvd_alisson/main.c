@@ -1,23 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "livro.c"
+#include "book.c"
 
 
 int main() {
-	Livro *l ;
-    l =  criar_lista(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    l = inserir_ordenado(l);
-    imprimir_lista(l);
-    l = removerLivroListaCircular(l);
-    imprimir_lista(l);
-    //quantidadeLivrosPorAutorListaCircular(l);
-    liberarListaCircular(l);
+	Book *book ;
+    book =  criar_lista_livro(book);
+    book = inserirLivroOrdenadoCircular(book);
+    book = inserirLivroOrdenadoCircular(book);
+    imprimir_lista(book);
+    book = removerLivroListaCircular(book);
+    imprimir_lista(book);
+    quantidadeLivrosPorAutorListaCircular(book);
+    liberarListaCircular(book);
     return 0;
 }
