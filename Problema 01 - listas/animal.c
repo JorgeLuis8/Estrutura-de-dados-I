@@ -12,3 +12,41 @@ struct animal{
 };
 
 
+Animal *criaListaEncadeadaSimplesAnimais() {
+	return NULL;
+}
+
+
+Animal *cadastrar(Animal *rebanho) {
+
+	Animal *novo = (Animal *) malloc(sizeof(Animal));
+	if (novo == NULL) {
+		printf("Erro ao alocar memoria\n");
+		exit(1);
+	}
+
+	printf("Digite o id: ");
+	scanf("%d",&novo->id_animal);
+	printf("Digite o id da fazenda: ");
+	scanf("%d",&novo->id_fazenda);
+	printf("Digite o sexo: ");
+	scanf("%c",&novo->sexo);
+	printf("Digite o peso: ");
+	scanf("%f",&novo->peso);
+	printf("Digite o status: ");
+	scanf("%d",&novo->status);
+
+	if (rebanho == NULL || rebanho->id_animal > novo->id_animal) {
+		novo->prox = rebanho;
+		rebanho = novo;
+	} else {
+		Animal *aux = rebanho;
+		while (aux->prox != NULL && aux->prox->id_animal < novo->id_animal) {
+			aux = aux->prox;
+		}
+		novo->prox = aux->prox;
+		aux->prox = novo;
+	}
+
+	return rebanho;
+}

@@ -20,3 +20,7 @@ struct fazenda
 	//ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
 	struct fazenda *prox;
 };
+
+Criador *criarListaEncadeadaCircularFazendas(){
+	return NULL;
+}
