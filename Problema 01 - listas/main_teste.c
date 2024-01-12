@@ -8,5 +8,7 @@ int main() {
     listaCriadores = cadastrar(listaCriadores);
     listaCriadores = cadastrar(listaCriadores);
     imprimir(listaCriadores);
+    listaCriadores = remover(listaCriadores);
+    imprimir(listaCriadores);
     return 0;   
 }

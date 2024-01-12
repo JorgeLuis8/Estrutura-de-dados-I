@@ -109,7 +109,7 @@ Livro *removerLivroListaCircular(Livro *livro){
             while (aux->proximo != livro){
                 aux = aux->proximo;
             }
-            aux->proximo = (livro)->proximo;
+            aux->proximo = livro->proximo;
             free(livro);
             livro = aux->proximo;
         }else{
