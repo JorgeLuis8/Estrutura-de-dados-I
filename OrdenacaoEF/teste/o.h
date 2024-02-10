@@ -1,9 +1,4 @@
-typedef struct ordenacao{
-	int *num;
-    int tamanho;
-    size_t memoria;
-}Ordenacao;
- Ordenacao;
+typedef struct ordenacao Ordenacao;
 
 void inicializa(Ordenacao *v, int tamanho);
 void preencher_random(Ordenacao *v);

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "o.h"
+#include "o.c"
 
 int main() {
     Ordenacao dados_quick, dados_merge;
