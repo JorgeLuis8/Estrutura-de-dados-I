@@ -4,22 +4,32 @@
 #include "o.h"
 
 int main() {
-    Dados dados;
-    int tamanho = 10; // Tamanho do array de números aleatórios
+    Dados *vetor;
 
-    inicializa(&dados, tamanho); // Inicializa a estrutura de dados
-    preencher_random(&dados); // Preenche o array com números aleatórios
+    int tamanho = 100000; 
 
-    printf("Array antes da ordenacao:\n");
-    imprimirArray(dados.num, dados.tamanho); // Imprime o array antes da ordenação
+    inicializa(&vetor, tamanho);
 
-    quickSort(&dados, 0, tamanho - 1); // Ordena o array usando o algoritmo Quick Sort
+    preencher_random(&vetor);
 
-    printf("Array depois da ordenacao:\n");
-    imprimirArray(dados.num, dados.tamanho); // Imprime o array depois da ordenação
 
-    // Libera a memória alocada para o array
-    free(dados.num);
+    // Bubble Sort
+    bubble_sort(&vetor);
+    imprimir_estatisticas(&vetor, "Bubble Sort");
 
+
+    // Selection Sort
+    inicializa(&vetor, tamanho); 
+    preencher_random(&vetor);
+    selection_sort(&vetor);
+    imprimir_estatisticas(&vetor, "Selection Sort");
+
+
+    // Insertion Sort
+    inicializa(&vetor, tamanho); 
+    insertion_sort(&vetor);
+    imprimir_estatisticas(&vetor, "Insertion Sort");
+
+    
     return 0;
 }

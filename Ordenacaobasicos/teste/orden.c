@@ -3,64 +3,99 @@
 #include <time.h>
 #include "o.h"
 
-typedef struct dados {
+struct dados {
     int *num;
     int tamanho;
-} Dados;
+    unsigned long long int comparacoes;
+    unsigned long long int trocas;
+    clock_t inicio;
+    clock_t fim;
+};
 
 void inicializa(Dados *v, int tamanho) {
     v->num = (int*)malloc(tamanho * sizeof(int));
     v->tamanho = tamanho;
+    v->comparacoes = 0;
+    v->trocas = 0;
 }
 
 void preencher_random(Dados *v) {
-    int i;
+	int i;
     srand(time(NULL));
     for (i = 0; i < v->tamanho; i++) {
-        v->num[i] = rand() % 10000;
+        v->num[i] = rand() % 10000; 
     }
 }
 
-void trocar(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+void bubble_sort(Dados *v) {
+	int i,j;
+    clock_t inicio = clock();
 
-int particionar(int arr[], int low, int high) {
-    int pivot = arr[high];
-    int i = (low - 1);
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] <= pivot) {
-            i++;
-            trocar(&arr[i], &arr[j]);
+    for (i = 0; i < v->tamanho - 1; i++) {
+        for (j = 0; j < v->tamanho - i - 1; j++) {
+            v->comparacoes++;
+            if (v->num[j] > v->num[j + 1]) {
+                int temp = v->num[j];
+                v->num[j] = v->num[j + 1];
+                v->num[j + 1] = temp;
+                v->trocas++;
+            }
         }
     }
-    trocar(&arr[i + 1], &arr[high]);
-    return (i + 1);
+
+    v->inicio = inicio;
+    v->fim = clock();
 }
 
-// Função Quick Sort recursiva
-void quickSort(Dados *dados, int low, int high) {
-    clock_t inicio = clock(); // Início da contagem de tempo
+void selection_sort(Dados *v) {
+	int i,j;
+    clock_t inicio = clock();
 
-    if (low < high) {
-        // Encontra o índice do pivô
-        int pi = particionar(dados->num, low, high);
 
-        // Ordena os elementos antes e depois do pivô
-        quickSort(dados, low, pi - 1);
-        quickSort(dados, pi + 1, high);
+    for (i = 0; i < v->tamanho - 1; i++) {
+        int min_index = i;
+        for (j = i + 1; j < v->tamanho; j++) {
+            v->comparacoes++;
+            if (v->num[j] < v->num[min_index]) {
+                min_index = j;
+            }
+        }
+        int temp = v->num[i];
+        v->num[i] = v->num[min_index];
+        v->num[min_index] = temp;
+        v->trocas++;
     }
 
-    clock_t fim = clock(); // Fim da contagem de tempo
-    double tempo_execucao = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
-    printf("Tempo de execucao: %.6f segundos\n", tempo_execucao);
+    v->inicio = inicio;
+    v->fim = clock();
 }
 
-// Função para imprimir o array
-void imprimirArray(int arr[], int tamanho) {
-    for (int i = 0; i < tamanho; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
+void insertion_sort(Dados *v) {
+	int i,j;
+    clock_t inicio = clock();
+
+    for (i = 1; i < v->tamanho; i++) {
+        int key = v->num[i];
+        int j = i - 1;
+        while (j >= 0 && v->num[j] > key) {
+            v->comparacoes++;
+            v->num[j + 1] = v->num[j];
+            j = j - 1;
+            v->trocas++;
+        }
+        v->num[j + 1] = key;
+    }
+
+    v->inicio = inicio;
+    v->fim = clock();
 }
+
+void imprimir_estatisticas(Dados *v, char* nome_algoritmo) {
+    printf("%s :\n", nome_algoritmo);
+    printf("Comparacoes: %llu\n", v->comparacoes);
+    printf("Trocas: %llu\n", v->trocas);
+    printf("Tempo: %.6f segundos\n", (double)(v->fim - v->inicio) / CLOCKS_PER_SEC);
+	printf("\n");
+}
+
+
