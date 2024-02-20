@@ -132,7 +132,7 @@ int buscarFazenda(Fazenda *fazendas){
 		return aux->id_fazenda;
 	}
 
-	while(aux->prox != fazendas && aux->prox->id_fazenda != id){
+	while(aux != NULL && aux->prox->id_fazenda != id){
 		aux = aux->prox;
 	}
 

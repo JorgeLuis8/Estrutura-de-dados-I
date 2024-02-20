@@ -30,7 +30,7 @@ Criador *cadastrarCriador(Criador *criadores) {
     novo->ant = NULL;
     novo->prox = NULL;
 
-    if (criadores == NULL || criadores->id_criador > novo->id_criador) {
+    if (criadores == NULL) {
         novo->prox = criadores;
         if (criadores != NULL) {
             criadores->ant = novo;
@@ -38,7 +38,7 @@ Criador *cadastrarCriador(Criador *criadores) {
         criadores = novo;
     } else {
         Criador *aux = criadores;
-        while (aux->prox != NULL && aux->prox->id_criador < novo->id_criador) {
+        while (aux->prox != NULL) {
             aux = aux->prox;
         }
         novo->prox = aux->prox;
