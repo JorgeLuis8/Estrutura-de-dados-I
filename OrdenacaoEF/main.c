@@ -4,23 +4,22 @@
 #include "o.h"
 
 int main() {
-    Ordenacao dados_quick, dados_merge;
-    int tamanho = 100000; // Tamanho do vetor
+    Dados d_quick, d_merge;
+    int tam = 1000000; 
 
-    inicializa(&dados_quick, tamanho);
-    inicializa(&dados_merge, tamanho);
+    inicializar_dados(&d_quick, tam);
+    inicializar_dados(&d_merge, tam);
 
-    preencher_random(&dados_quick);
-    preencher_random(&dados_merge);
+    preencher_array(&d_quick);
+    preencher_array(&d_merge);
 
-    printf("Tempo e memoria utilizada pelo Quick Sort:\n");
-    imprimirTempoETamanhoMemoria(&dados_quick);
+    printf("Tempo de ordencao e memoria utilizada pelo Quick Sort:\n");
+    calcula_tempo_memoria_quick(&d_quick);
 
-    printf("\nTempo e memoria utilizada pelo Merge Sort:\n");
-    imprimirTempoETamanhoMemoriaMergeSort(&dados_merge);
+    printf("\nTempo de ordenacao e memoria utilizada pelo Merge Sort:\n");
+    calcula_tempo_memoria_merge(&d_merge);
  
-    free(dados_quick.num);
-    free(dados_merge.num);
+
 
     return 0;
 }

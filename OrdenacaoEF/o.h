@@ -1,15 +1,14 @@
-typedef struct ordenacao{
+typedef struct dados{
 	int *num;
     int tamanho;
     size_t memoria;
-}Ordenacao;
- Ordenacao;
+}Dados;
 
-void inicializa(Ordenacao *v, int tamanho);
-void preencher_random(Ordenacao *v);
+
+void inicializar_dados(Dados *v, int tamanho);
+void preencher_array(Dados *v);
 void imprimirArray(int arr[], int tamanho);
-void quickSort(Ordenacao *dados, int low, int high);
+void quickSort(Dados *dados, int low, int high);
 void trocar(int *a, int *b);
 int particionar(int arr[], int low, int high);
-void calcularUsoMemoria(Ordenacao *dados);
-void imprimirTempoETamanhoMemoria(Ordenacao *dados);
+void imprimirTempoETamanhoMemoria(Dados *dados);
